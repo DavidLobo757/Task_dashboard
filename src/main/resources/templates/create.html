@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="httpe://thymeleaf.org">
+  <head>
+    <title>Create</title>
+  </head>
+  <body>
+    <h1>Create</h1>
+    <p>Hello!</p>
+    
+<!--     <form action="" method="post"> -->
+<!--      <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
+<!--       <div> -->
+      
+<!--       
+<!--         Believe it or not but the th:field from thyme leaf injects an id so you -->
+<!--         can just grab the username from the th:field -->
+<!--        --> 
+<!--         Username: <input type="text" th:field="${user.username}" > -->
+<!--       </div> -->
+<!--       <div> -->
+<!--         Password: <input type="text" th:field="${user.password}"> -->
+<!--       </div> -->
+<!-- <!--       <div> --> 
+<!-- <!--         <label>Confirm Password</label> --> 
+<!-- <!--         <input type="password" > <i id="confirmPasswordEyeIcon"></i> --> 
+<!-- <!--       </div> --> 
+<!--       <div> -->
+<!--         <input type="submit" value="Create Account"> -->
+<!--       </div> -->
+<!--     </form> -->
+    
+    <form action="" method="post">
+      <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <div>
+        Username: <input type="text" th:field="${user.username}" >
+      </div>
+      <div>
+        Password: <input type="text" th:field="${user.password}">
+      </div>
+      <div>
+       <button id="submitButton">Submit</button>
+      </div>
+    </form>
+    <script type="text/javascript" src="/js/create.js"></script>
+  </body>
+  
+  
+</html>
