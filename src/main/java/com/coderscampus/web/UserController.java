@@ -42,7 +42,7 @@ public class UserController {
 		System.out.println(user.getAuthorities());
 		System.out.println(user.getEmail());
 		System.out.println("Username: " + user.getUsername() + ", Password: " + user.getPassword());
-		return "redirect:/users/" + user.getId();
+		return "create";
 		// whenever you come back to this make sure that the redirect will be going to the user as /users/{id}
 	}
 	
@@ -63,8 +63,8 @@ public class UserController {
 	//
 	@GetMapping("/users/validateUsername")
 	@ResponseBody
-	public Boolean getValidUsername(@RequestBody User user) {
-		user = userService.findByUsername(user.getUsername());
+	public Boolean getValidUsername( User user) {
+		
 		System.out.println("Username = " + user.getUsername());
 		return true;
 	}

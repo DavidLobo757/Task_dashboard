@@ -1,5 +1,5 @@
-var submitButton = document.querySelector("#submitButton");
-var usernameTextBox = document.querySelector("#username");
+var submitButton = document.querySelector("#submitButton")
+var usernameTextBox = document.querySelector("#username")
 var passwordTextBox = document.querySelector("#password")
 var username = document.querySelector("#username")
 var password = document.querySelector("#password")
@@ -11,22 +11,24 @@ var users = []
       
       
         submitButton.addEventListener('click', function () {    
-	      console.log(username.value + password.value)
-          if (username.value =='' || password.value =='') {
-            alert("Please enter a username and a password")
-            window.location.hash="reload"
-          } else {
-            console.log("Inputs look valid, proceed with form submission")
-             var user = {
+		  var user = {
 			"username" : username.value,
 			"password" : password.value
 					}
-			fetch(`/users/create`, {
+	      console.log(username.value + password.value);
+          if (username.value =='' || password.value =='') {
+            alert("Please enter a username and a password")
+            
+            window.location.hash="reload"
+          } else {
+            console.log("Inputs look valid, proceed with form submission")
+             
+			fetch(`/create`, {
 				method: "POST",
 				headers: {
-					"Content-Type": "application/json",
-					'X-CSRF-TOKEN': token
-				},
+				  "Content-Type": "application/json",
+				  'X-CSRF-TOKEN': token
+			},
 				body: JSON.stringify(user)
 			})
 			.then((fetchResponse)=> fetchResponse.json())
@@ -47,7 +49,9 @@ var users = []
         // USERNAME
         usernameTextBox.addEventListener('blur', () => {
 			
-			fetch(`/users/validateUsername?username=${username.value}`)
+			fetch(`/users/validateUsername?username=${username.value}`, {
+				method: "GET"
+			})
 			.then((response)=> {
 				return response.json()
 			})	
@@ -71,41 +75,41 @@ var users = []
 			
 		});
 		// This shit doesn't even exist'
-		submitButton.addEventListener('onmouseover', ()=> {
-			
-          	var user = {
-					"username": username.value,
-					"password": password.value
-				}
-				
-//				This is when you want to send information through the 
-//				body as json this is the syntax for it
-//
-//				body: `{
-//					"username": "${username.value}",
-//					"password": "${password.value}"
-//				}`
-			fetch(`/users/exists`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					'X-CSRF-TOKEN': token
-				},
-				body: JSON.stringify(user)
-			})
-			.then((fetchResponse)=> fetchResponse.json())
-				
-			
-			.then((Response)=>{
-				console.log(Response)
-			})
-			
-		});
+//		submitButton.addEventListener('onmouseover', ()=> {
+//			
+//          	var user = {
+//					"username": username.value,
+//					"password": password.value
+//				}
+//				
+////				This is when you want to send information through the 
+////				body as json this is the syntax for it
+////
+////				body: `{
+////					"username": "${username.value}",
+////					"password": "${password.value}"
+////				}`
+//			fetch(`/users/exists`, {
+//				method: "POST",
+//				headers: {
+//					"Content-Type": "application/json",
+//					'X-CSRF-TOKEN': token
+//				},
+//				body: JSON.stringify(user)
+//			})
+//			.then((fetchResponse)=> fetchResponse.json())
+//				
+//			
+//			.then((Response)=>{
+//				console.log(Response)
+//			})
+//			
+//		});
         
         
     
     
-      usernameTextBox.addEventListener('focus', () => {
-        console.log("The username textbox now has focus")
-      });
+//      usernameTextBox.addEventListener('focus', () => {
+//        console.log("The username textbox now has focus")
+//      });
         
