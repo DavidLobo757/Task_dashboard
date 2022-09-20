@@ -74,8 +74,8 @@ var users = []
 			})
 			
 		});
-		// This shit doesn't even exist'
-//		submitButton.addEventListener('onmouseover', ()=> {
+		
+//		submitButton.addEventListener('onclick', ()=> {
 //			
 //          	var user = {
 //					"username": username.value,

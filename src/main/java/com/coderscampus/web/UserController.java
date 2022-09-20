@@ -35,7 +35,6 @@ public class UserController {
 	}
 	
 	@PostMapping("/create")
-	@ResponseBody
 	public String postCreateUser(@RequestBody User user) {
 		userService.createUser(user);
 		System.out.println(user);
