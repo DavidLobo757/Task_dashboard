@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+  <head>
+    <title>Register</title>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/fdce85e961.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h2>Register Below</h2>
+    <form action="/dashboard" method="post" class="form" id="form" >
+     <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <div>
+        <label>Username</label>
+        <input type="text" th:field="${user.username}">
+      </div>
+      <div>
+        <label>Password</label>
+        <input type="password" th:field="${user.password}"> <i id = "passwordEyeIcon"class="fa-regular fa-eye"></i>
+      </div>
+      <div>
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword"> <i id="confirmPasswordEyeIcon"class="fa-regular fa-eye"></i>
+      </div>
+      <div>
+        
+      </div>
+      <button id=submitBtn>Create account</button>
+    </form>
+    <script type="text/javascript" src="/js/register.js"></script>
+  </body>
+</html>

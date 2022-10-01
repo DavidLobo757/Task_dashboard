@@ -28,38 +28,30 @@ public class UserController {
 	private UserService userService;
 	
 	
-	@GetMapping("/create")
-	public String createUser(ModelMap model) {
-		model.put("user", new User());
-		return "create";
+	@GetMapping("/register")
+	public String getRegister(ModelMap model) {
+		User user  = new User();
+		
+		model.put("user", user);
+		return "register";
+		
 	}
 	
-	@PostMapping("/create")
-	public String postCreateUser(@RequestBody User user) {
+	@PostMapping("/register")
+	public String postRegister (User user) {
 		userService.createUser(user);
-		System.out.println(user);
-		System.out.println(user.getAuthorities());
-		System.out.println(user.getEmail());
-		System.out.println("Username: " + user.getUsername() + ", Password: " + user.getPassword());
-		return "create";
-		// whenever you come back to this make sure that the redirect will be going to the user as /users/{id}
-	}
-	
-	
-	@GetMapping("/users/exists")
-	@ResponseBody
-	public Boolean getExists(String username,String password) {
-		System.out.println("Username = " + username + ", Password = " + password);
-		return true;
+		return "redirect:/users/" + user.getId();
+		
 	}
 	
 	@PostMapping("/users/exists")
 	@ResponseBody
-	public Boolean postExists (@RequestBody User user) {
-		System.out.println("Username = " + user.getUsername() + ", Password = " + user.getPassword());
-		return true;
+	public Boolean postExists(@RequestBody User user) {
+		user = userService.findByUsername(user.getUsername());
+		return user != null;
 	}
-	//
+	
+
 	@GetMapping("/users/validateUsername")
 	@ResponseBody
 	public Boolean getValidUsername( User user) {
