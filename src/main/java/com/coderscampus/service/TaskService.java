@@ -33,7 +33,8 @@ public class TaskService {
 			return tasks;
 		}
 		
-		public Optional<Task> findById(Long taskId) {
-			return taskRepo.findById(taskId);
+		public Task findById(Long taskId) {
+			Optional<Task> taskOpt = taskRepo.findById(taskId);
+			return taskOpt.orElse(new Task());
 		}
 }

@@ -80,6 +80,11 @@ public class UserService {
 		user.setEmail(email);
 		userRepo.save(user);
 	}
+
+	public Object getUserByTaskId(Long taskId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

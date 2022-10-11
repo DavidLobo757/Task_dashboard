@@ -14,7 +14,7 @@ import com.coderscampus.domain.User;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 		List<Comment> findAllByUser(Optional<User> user);
 		
-		List<Comment> findAllByPost(Task task);
+		List<Comment> findAllByTask(Task task);
 		
 		void deleteByCommentId(Long commentId);
 		

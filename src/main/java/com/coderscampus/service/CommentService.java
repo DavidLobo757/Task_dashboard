@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.coderscampus.domain.Comment;
 import com.coderscampus.domain.Task;
+import com.coderscampus.dto.CommentDto;
 import com.coderscampus.repositories.CommentRepository;
 import com.coderscampus.repositories.TaskRepository;
 import com.coderscampus.repositories.UserRepository;
@@ -40,9 +41,9 @@ public class CommentService {
 			return commentRepo.findAllByUser(userRepo.findById(userId));
 		}
 		
-		public List<Comment> findByAllTask(Long taskId) {
+		public List<Comment> findByAllByTask(Long taskId) {
 			Task task = taskRepo.findTaskById(taskId);
-			List<Comment> comments = commentRepo.findAllByPost(task);
+			List<Comment> comments = commentRepo.findAllByTask(task);
 			
 			Collections.reverse(comments);
 			return comments;
@@ -54,5 +55,15 @@ public class CommentService {
 			
 		}
 		
+		
+		public void createComment(CommentDto comment) {
+			Comment newComment = new Comment();
+			newComment.setCommentMessaage(comment.getCommentDetails());
+			newComment.setUser(userRepo.findUserId(comment.getUserId()));
+			newComment.setTask(taskRepo.getOne(comment.getTaskId()));
+			commentRepo.save(newComment);
+			
+			System.out.println(newComment.toString());
+		}
 		
 }

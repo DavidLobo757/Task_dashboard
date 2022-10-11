@@ -75,6 +75,24 @@ public class User {
 	public void setEmail(Email email) {
 		this.email = email;
 	}
+	
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval=true)
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+	
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval=true)
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
 	@Override
 	public int hashCode() {

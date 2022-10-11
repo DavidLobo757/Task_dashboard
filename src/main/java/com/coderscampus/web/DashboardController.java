@@ -7,12 +7,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import com.coderscampus.domain.Task;
 import com.coderscampus.domain.User;
 import com.coderscampus.repositories.UserRepository;
 import com.coderscampus.service.AdminService;
+import com.coderscampus.service.TaskService;
 import com.coderscampus.service.UserService;
 
 @Controller
@@ -27,6 +27,9 @@ public class DashboardController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private TaskService taskService;
+	
 	@GetMapping("/")
 	public String redirectToDashboard() {
 		return "redirect:/dashboard";
@@ -35,12 +38,14 @@ public class DashboardController {
 	@GetMapping("/dashboard")
 	public String getDashBoard (@AuthenticationPrincipal User user, ModelMap model, Long id) {
 		List<User> allUserAccounts = adminService.getAllUserAccounts();
-		
+		List<Task> taskList = taskService.findAll();
 		
 		
 		model.put("user", user);
 		model.put("email", user.getEmail());
+		model.put("tasks", taskList);
 		
+		System.out.println(taskList);
 		
 		return "dashboard";
 	}

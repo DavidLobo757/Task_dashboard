@@ -34,4 +34,8 @@ public interface UserRepository extends JpaRepository<User, Long>{
 			+ " left join fetch u.authorities"
 			+ " where u.username = :username")
 	User findByUsername(String username);
+
+	@Query("select u from User u"
+			)
+	User findUserId(Long id);
 }
