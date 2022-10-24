@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.userDetailsService(userDetailsService)
 		.passwordEncoder(passwordEncoder);
 // 		.withUser("sup123")
-//  	.password("")
+//  	.password("dude")
 //  	.roles("USER", "ADMIN");
 	}
 	
@@ -43,8 +43,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()
 	    .antMatchers("/dashboard").hasAnyRole("USER")
 	    .antMatchers("/users/").hasAnyRole("USER")
-	    .antMatchers("/task").hasAnyRole("USER")
-	    .antMatchers("/profile").hasAnyRole("USER")
+	    .antMatchers("/task/**").hasAnyRole("USER")
+	    .antMatchers("/profile/**").hasAnyRole("USER")
 	    .antMatchers("/comment").hasAnyRole("USER")
 	    .antMatchers("/register").anonymous()
 		.and()

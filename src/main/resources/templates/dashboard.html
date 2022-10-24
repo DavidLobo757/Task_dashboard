@@ -30,6 +30,12 @@
             <li class="nav-item">
               <a href="">About me</a>
             </li>
+            <li class="nav-item-button">
+              <form method="post" action="/logout">
+                <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <button type="submit">Logout</button>
+              </form>
+            </li> 
           </ul>
          </nav>
     <!-- End -->
@@ -37,24 +43,21 @@
       <p>sddddddddddddddddddddddddddddddddddddddd</p>
       <p th:text="|Hello there ${user.username}|"> </p>
         <p th:text="|${user.email}|"></p>
-      <form method="post" action="/logout">
-       <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-       <button type="submit">Logout</button>
-       
-     </form>
-
+      
+    <a href="/task/creatingTask">Create task</a>
     </div>
       <div class="grid-container">
+      
         <div  th:each="task : ${tasks}" >
          <div class="grid-item">
-           
-           <a th:href="@{/task/{taskId}/(taskId=${task.taskId})}"><div th:text="${task.taskId}"></div>
-           <div th:text="${task.name}"></div>
-           <div th:text="${task.taskId}"></div>
-           <div th:text="${task.dateCreated}"></div>
-           <div th:text="${task.taskDescription}"></div>
-           <div th:text="${task.user.id}"></div>
-           <div th:text="${task.user.username}"></div>
+           <a th:href="@{/task/{taskId}/(taskId=${task.taskId})}">
+             <div th:text="${task.taskId}"></div>
+             <div th:text="${task.name}"></div>
+             <div th:text="${task.taskId}"></div>
+             <div th:text="${#temporals.format(task.dateCreated, 'MM-dd-yyyy HH:mm')}"></div>
+             <div th:text="${task.taskDescription}"></div>
+             <div th:text="${task.user.userId}"></div>
+             <div th:text="${task.user.username}"></div>
            </a>
          </div>
         </div>

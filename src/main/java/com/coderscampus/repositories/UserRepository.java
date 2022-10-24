@@ -22,7 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
 			+ " left join fetch u.email"
 			+ " where u.id = :id"
 			)
-	Optional<User> findUserIdWithEmail(Long id);
+	Optional<User> findByUserIdWithEmail(Long id);
 	
 //	@Query("select u from User u"
 //			+ " left join fetch u.email"
@@ -35,7 +35,6 @@ public interface UserRepository extends JpaRepository<User, Long>{
 			+ " where u.username = :username")
 	User findByUsername(String username);
 
-	@Query("select u from User u"
-			)
-	User findUserId(Long id);
+	
+	User findByUserId(Long userId);
 }

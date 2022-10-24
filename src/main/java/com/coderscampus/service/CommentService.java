@@ -1,5 +1,6 @@
 package com.coderscampus.service;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,16 +34,14 @@ public class CommentService {
 			commentRepo.deleteById(commentId);
 		}
 		
-		public Comment findByCommentId(Long commentId) {
-			return commentRepo.findByCommentId(commentId);
-		}
+		
 		
 		public List<Comment> findByAllUserId(Long userId) {
 			return commentRepo.findAllByUser(userRepo.findById(userId));
 		}
 		
-		public List<Comment> findByAllByTask(Long taskId) {
-			Task task = taskRepo.findTaskById(taskId);
+		public List<Comment> findAllByTask(Long taskId) {
+			Task task = taskRepo.findByTaskId(taskId);
 			List<Comment> comments = commentRepo.findAllByTask(task);
 			
 			Collections.reverse(comments);
@@ -59,11 +58,14 @@ public class CommentService {
 		public void createComment(CommentDto comment) {
 			Comment newComment = new Comment();
 			newComment.setCommentMessaage(comment.getCommentDetails());
-			newComment.setUser(userRepo.findUserId(comment.getUserId()));
+			newComment.setUser(userRepo.findByUserId(comment.getUserId()));
 			newComment.setTask(taskRepo.getOne(comment.getTaskId()));
+			newComment.setDateCreated(LocalDateTime.now());
 			commentRepo.save(newComment);
 			
 			System.out.println(newComment.toString());
 		}
+		
+		
 		
 }

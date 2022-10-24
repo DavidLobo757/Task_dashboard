@@ -5,6 +5,7 @@
 
 
 * {
+	margin: 0%;
 	color: #000000;
 }
 
@@ -13,7 +14,7 @@ a {
 }
 
 a:hover {
-	font-size: 20px;
+	font-size: 40px;
 }
 
 #centerPage {
@@ -30,9 +31,7 @@ a:hover {
 	
 	height: 10%;
 	width: 100%;
-	
 	margin-right: 10%;
-	
     text-align: center;
 	background-color: #dddddd;
 }
@@ -150,11 +149,12 @@ a:hover {
   display: grid;
   grid-template-columns: auto auto auto;
   background-color: #dddddd;
-  padding: 10px;
+  padding: 50px;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+/*   border: 1px solid rgba(0, 0, 0, 0.8); */
+  box-shadow: 0px 1px 6px #5e5d5d;
   padding: 20px;
   font-size: 30px;
   text-align: center;
@@ -162,12 +162,7 @@ a:hover {
   margin: 5px
 }
 
-.grid-item:hover {
-	padding-left: 30px;
-	font-size: 40px;
-	margin-left: 30px;
-	margin-right: 30px;
-}
+
 /* End */
 
 

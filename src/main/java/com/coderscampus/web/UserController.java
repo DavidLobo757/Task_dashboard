@@ -40,7 +40,7 @@ public class UserController {
 	@PostMapping("/register")
 	public String postRegister (User user) {
 		userService.createUser(user);
-		return "redirect:/users/" + user.getId();
+		return "redirect:/users/" + user.getUserId();
 		
 	}
 	
@@ -85,7 +85,7 @@ public class UserController {
 	@PostMapping("/users/{id}")
 	public String postUser (@PathVariable Long id) {
 		User currentUser = userService.findByUserIdWithEmail(id);
-		return "redirect:/users/" + currentUser.getId();
+		return "redirect:/users/" + currentUser.getUserId();
 	}
 	
 	

@@ -29,7 +29,8 @@ public class TaskService {
 		}
 		
 		public List<Task> findAll() {
-			List<Task> tasks = taskRepo.findAllByTaskId();
+			List<Task> tasks = taskRepo.findAllByOrderByTaskId();
+			
 			return tasks;
 		}
 		
@@ -37,4 +38,11 @@ public class TaskService {
 			Optional<Task> taskOpt = taskRepo.findById(taskId);
 			return taskOpt.orElse(new Task());
 		}
+		
+		public Task findTasksWithComments (Long taskId) {
+			Optional<Task> taskComments = taskRepo.findByTaskWithComments(taskId);
+			return  taskComments.orElse(new Task());
+		}
+		
+		
 }

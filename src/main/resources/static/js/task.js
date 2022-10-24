@@ -1,23 +1,23 @@
 
 
-var commentBox = documnet.getElementById("commenbtBox")
+var commentBox = document.getElementById("commentBox")
 console.log(commentBox)
 
 window.onload = function() {
 	commentBox.focus();
 };
 
-commentBox.addEventListener("onclick", submitTask);
+commentBox.addEventListener("keypress",submitComment);
 
-function submitTask() {
-	let comment = {
+function submitComment(event) {
+	if(event.keyCode === 13) {
+		let comment = {
 		commentDetails: commentBox.value,
 		userId: userId,
-		postId,
+		taskId: taskId,
 	}
-	
 	console.log(comment)
-	commentBox.value = ""
+	
 	console.log("Submitting comment")
 	
 	
@@ -33,4 +33,5 @@ function submitTask() {
 	})
 	
 	return false;
+	}
 }

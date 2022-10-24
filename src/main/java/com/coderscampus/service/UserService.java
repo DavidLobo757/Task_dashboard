@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.coderscampus.domain.Authorities;
 import com.coderscampus.domain.Email;
+import com.coderscampus.domain.Task;
 import com.coderscampus.domain.User;
 import com.coderscampus.repositories.AuthoritiesRepository;
+import com.coderscampus.repositories.TaskRepository;
 import com.coderscampus.repositories.UserRepository;
 
 @Service
@@ -19,13 +21,17 @@ public class UserService {
 	private UserRepository userRepo;
 	
 	@Autowired
+	private TaskRepository taskRepo;
+	
+	
+	@Autowired
 	private AuthoritiesRepository authorityRepo;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	public User findByUserIdWithEmail(Long id) {
-		Optional<User> usersOpt = userRepo.findUserIdWithEmail(id);
+		Optional<User> usersOpt = userRepo.findByUserIdWithEmail(id);
 		
 		return usersOpt.orElse(new User());
 	}
@@ -59,7 +65,7 @@ public class UserService {
 		// If theres no email
 		if (user.getEmail() == null) {
 			Email email = new Email();
-			email.setUserId(user.getId());
+			email.setUserId(user.getUserId());
 			email.setEmail(user.getUsername());
 			email.setUser(user);
 			user.setEmail(email);
@@ -69,21 +75,22 @@ public class UserService {
 		// To check at the end what it has
 		System.out.println(user.getPassword());
 		System.out.println(user.getUsername());
-		System.out.println(user.getId());
+		System.out.println(user.getUserId());
 		
 	}
 	
 	public void setEmail(User user) {
 		Email email = new Email();
-		email.setUserId(user.getId());
+		email.setUserId(user.getUserId());
 		email.setEmail("N/A");
 		user.setEmail(email);
 		userRepo.save(user);
 	}
 
-	public Object getUserByTaskId(Long taskId) {
-		// TODO Auto-generated method stub
-		return null;
+	public User getUserByTaskId(Long taskId) {
+		Task task = taskRepo.findByTaskId(taskId);
+		User user = userRepo.findByUserId(task.getUser().getUserId());
+		return user;
 	}
 	
 	

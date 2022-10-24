@@ -61,7 +61,7 @@ public class Task {
 		this.user = user;
 	}
 	
-	// remember to check out what orphan removal does forgot
+	
 	@OneToMany(mappedBy="task", cascade=CascadeType.ALL, orphanRemoval=true)
 	public List<Comment> getComment() {
 		return comment;
