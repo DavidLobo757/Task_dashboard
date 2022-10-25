@@ -28,10 +28,9 @@ function submitComment(event) {
 			'X-CSRF-TOKEN': token, 
 		},
 		body: JSON.stringify(comment)
-	}).then(response => response.json).then(() => {
-		window.location.reload();
-	})
-	
-	return false;
+	}).then(response => response.json())
+	  .then((data)=>console.log(JSON.stringify(data)))
 	}
+	
 }
+

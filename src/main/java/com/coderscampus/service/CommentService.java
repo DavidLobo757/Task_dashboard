@@ -55,15 +55,13 @@ public class CommentService {
 		}
 		
 		
-		public void createComment(CommentDto comment) {
+		public Comment createComment(CommentDto comment) {
 			Comment newComment = new Comment();
 			newComment.setCommentMessaage(comment.getCommentDetails());
 			newComment.setUser(userRepo.findByUserId(comment.getUserId()));
 			newComment.setTask(taskRepo.getOne(comment.getTaskId()));
 			newComment.setDateCreated(LocalDateTime.now());
-			commentRepo.save(newComment);
-			
-			System.out.println(newComment.toString());
+			return commentRepo.save(newComment);
 		}
 		
 		

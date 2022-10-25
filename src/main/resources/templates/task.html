@@ -20,7 +20,11 @@
       <div th:text="${comment.commentMessaage}"></div>
     </div>
     
-    <input type="text" id="commentBox">
+    <form method="post" action="/createComment">
+      <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+     <input type="text" id="commentBox">
+    </form>
+     
     
     
     
