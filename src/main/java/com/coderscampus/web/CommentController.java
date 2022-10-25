@@ -2,6 +2,7 @@ package com.coderscampus.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,13 @@ public class CommentController {
 		commentService.createComment(comment);
 		System.out.println("ITS WORKING SOME HOW SOME WAY SDHFJSDHKFLJ");
 		return "redirect:/dashboard";
+	}
+	
+	@GetMapping("/createComment" )
+	public String getComment(@RequestBody CommentDto comment, @AuthenticationPrincipal User user) {
+		
+		
+		return "task";
 	}
 	
 //	@PostMapping("/post/{postId}/comment/{commentId}/delete")

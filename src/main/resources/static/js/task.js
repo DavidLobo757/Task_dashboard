@@ -24,7 +24,7 @@ function submitComment(event) {
 	fetch(`/createComment`, {
 		method: "POST",
 		headers: {
-			"Content-Type": "application/json",
+			'Content-Type': "application/JSON",
 			'X-CSRF-TOKEN': token, 
 		},
 		body: JSON.stringify(comment)
