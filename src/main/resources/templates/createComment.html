@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="httpe://thymeleaf.org">
+  <head>
+    <title>Task</title>
+    <link rel="stylesheet" type="text/css" href="/css/createTask.css">
+  </head>
+  <body>
+    <H1>Comment</H1>
+    
+    <form method="post" action="/creatingComment" >
+      <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <label>Comment:  </label>
+      <br>
+      <textarea rows="5" cols="25" th:field="${comment.commentMessaage}"></textarea>
+      <br>
+      <input type="hidden" th:field="${currentUser.username}">
+      <input type="hidden" th:field="${currentUser.userId}">
+      <input type="hidden" th:field="${currentTask.name}">
+      <input type="hidden" th:field="${currentTask.taskId}">
+      <button>Create Comment</button>
+    </form>
+    
+  </body>
+</html>

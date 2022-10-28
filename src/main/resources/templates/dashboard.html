@@ -58,6 +58,13 @@
              <div th:text="${task.taskDescription}"></div>
              <div th:text="${task.user.userId}"></div>
              <div th:text="${task.user.username}"></div>
+             <div th:unless="${task.user.userId == '[[${user.userId}]]'}">
+              <div> Hello!</div>
+              <form method="post" th:action="@{/dashboard/{taskId}/delete(taskId = ${task.taskId})}">
+                <button id="commentDelete" type="submit"> Delete Task</button>
+              </form>
+             </div>
+            
            </a>
          </div>
         </div>

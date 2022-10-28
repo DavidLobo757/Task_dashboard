@@ -45,6 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	    .antMatchers("/dashboard").hasAnyRole("USER")
 	    .antMatchers("/users/").hasAnyRole("USER")
 	    .antMatchers("/task/**").hasAnyRole("USER")
+	    .antMatchers("/createComment").hasAnyRole("USER")
 	    .antMatchers("/profile/**").hasAnyRole("USER")
 	    .antMatchers("/comment").hasAnyRole("USER")
 	    .antMatchers("/register").anonymous()

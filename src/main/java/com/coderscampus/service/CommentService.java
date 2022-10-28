@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.coderscampus.domain.Comment;
 import com.coderscampus.domain.Task;
-import com.coderscampus.dto.CommentDto;
+import com.coderscampus.domain.User;
 import com.coderscampus.repositories.CommentRepository;
 import com.coderscampus.repositories.TaskRepository;
 import com.coderscampus.repositories.UserRepository;
@@ -48,20 +48,12 @@ public class CommentService {
 			return comments;
 		}
 		
-		public void createComment() {
-			Comment comment = new Comment();
-			comment.setCommentMessaage(comment.getCommentMessaage());
-			
-		}
-		
-		
-		public Comment createComment(CommentDto comment) {
-			Comment newComment = new Comment();
-			newComment.setCommentMessaage(comment.getCommentDetails());
-			newComment.setUser(userRepo.findByUserId(comment.getUserId()));
-			newComment.setTask(taskRepo.getOne(comment.getTaskId()));
-			newComment.setDateCreated(LocalDateTime.now());
-			return commentRepo.save(newComment);
+
+		public Comment createComment(Comment comment, User user, Task task) {
+			comment.setUser(user);
+			comment.setTask(taskRepo.getOne(task.getTaskId()));
+			comment.setDateCreated(LocalDateTime.now());
+			return commentRepo.save(comment);
 		}
 		
 		

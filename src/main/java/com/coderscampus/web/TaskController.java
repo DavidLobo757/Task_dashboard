@@ -45,7 +45,6 @@ public class TaskController {
 		model.put("task", task);
 		model.put("currentUser", user);
 		return "createTask";
-		
 	}
 	
 	@PostMapping("/createTask")
@@ -56,15 +55,9 @@ public class TaskController {
 	
 	@PostMapping("/dashboard/{taskId}/delete")
 	public String deleteTask(@PathVariable Long taskId) {
-		
+		taskService.deleteById(taskId);
 		return "redirect:/dashboard";
 	}
-//	
-//	@PostMapping("/createTask")
-//	public String createTask(@AuthenticationPrincipal User user, Task task) {
-//		System.out.println("Creating task");
-//		taskService.createTask(user, task);
-//		return "redirect:/dashboard";
-//	}
+
 	
 }
