@@ -9,6 +9,7 @@ public class LearningTest {
 	@Test
 	public void encrypt_password () {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
 		String encodedPassword = passwordEncoder.encode("dude");
 		
 		System.out.println(encodedPassword);

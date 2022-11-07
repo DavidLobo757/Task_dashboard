@@ -62,27 +62,17 @@ public class UserService {
 		authority.setAuthority("ROLE_USER");
 		authorityRepo.save(authority);
 		userRepo.save(user);
-		// If theres no email
-		if (user.getEmail() == null) {
-			Email email = new Email();
-			email.setUserId(user.getUserId());
-			email.setEmail(user.getUsername());
-			email.setUser(user);
-			user.setEmail(email);
-			userRepo.save(user);
-		}
 		
-		// To check at the end what it has
-		System.out.println(user.getPassword());
-		System.out.println(user.getUsername());
-		System.out.println(user.getUserId());
-		
-	}
-	
-	public void setEmail(User user) {
+		// creates fake email until changed
 		Email email = new Email();
 		email.setUserId(user.getUserId());
-		email.setEmail("N/A");
+		email.setEmail(user.getUsername());
+		email.setUser(user);
+		user.setEmail(email);
+		userRepo.save(user);
+	}
+	
+	public void saveEmail(User user, Email email) {
 		user.setEmail(email);
 		userRepo.save(user);
 	}
@@ -92,6 +82,7 @@ public class UserService {
 		User user = userRepo.findByUserId(task.getUser().getUserId());
 		return user;
 	}
+	
 	
 	
 }

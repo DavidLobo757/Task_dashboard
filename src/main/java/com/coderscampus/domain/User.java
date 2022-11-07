@@ -24,6 +24,7 @@ public class User {
 	private String password;
 	private Set<Authorities> authorities = new HashSet<>();
 	private Email email;
+	private Address address;
 	private List<Task> tasks = new ArrayList<>();
 	private List <Comment> comments = new ArrayList<>();
 	
@@ -92,6 +93,15 @@ public class User {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+	
+	@OneToOne(mappedBy="user", cascade={CascadeType.PERSIST})
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override

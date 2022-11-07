@@ -7,7 +7,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.coderscampus.domain.Email;
 import com.coderscampus.domain.Task;
 import com.coderscampus.domain.User;
 import com.coderscampus.repositories.UserRepository;
@@ -36,21 +38,32 @@ public class DashboardController {
 	}
 	
 	@GetMapping("/dashboard")
-	public String getDashBoard (@AuthenticationPrincipal User user, ModelMap model, Long id) {
-		List<User> allUserAccounts = adminService.getAllUserAccounts();
-		List<Task> taskList = taskService.findAll();
+	public String getDashBoard (@AuthenticationPrincipal User user, ModelMap model) {
 		
+		List<Task> taskList = taskService.findAll();
 		
 		model.put("user", user);
 		model.put("email", user.getEmail());
 		model.put("tasks", taskList);
-		
-		System.out.println(taskList);
-		
 		return "dashboard";
 	}
 	
+	@GetMapping("/profile")
+	public String getProfile (@AuthenticationPrincipal User user, ModelMap model) {
+		model.put("user", user);
+		model.put("email", user.getEmail());
+		return "profile";
+	}
 	
+	@PostMapping("/profile")
+	public String postProfile (User user) {
+		Email email = user.getEmail();
+		
+		userService.saveUser(user);
+		userService.saveEmail(user, email);
+		return "redirect:/profile";
+		
+	}
 	
 	
 	

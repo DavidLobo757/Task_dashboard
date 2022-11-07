@@ -35,7 +35,7 @@ public class Email {
 		this.email = email;
 	}
 	
-	@Id
+	@Id  
 	public Long getUserId() {
 		return userId;
 	}

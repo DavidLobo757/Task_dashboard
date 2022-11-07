@@ -7,34 +7,34 @@
 
 body {
 	overflow-x: hidden;
-	background-color: #87bfff;
-	font-family: 'Roboto', sans-seriff;
 }
 
+a {
+	text-decoration: none;
+}
 
+a:hover {
+	font-size: 40px;
+}
 
+#centerPage {
+	text-align: center;
+}
 
-
-
-
-
-
+#centerFOrm {
+	text-align: center;
+}
 
 /* Nav Bar Start */
 
 .navbar-title {
-	padding-top: 2%;
-	height: 7%;
+	
+	height: 10%;
 	width: 100%;
 	margin-right: 10%;
     text-align: center;
-	background-color: #0c7cfc;
+	background-color: #dddddd;
 }
-
-.title {
-	color: white;
-}
-
 
 
 .container {
@@ -143,67 +143,3 @@ body {
 	transform: scaleX(1);
 }
 /* Nav Bar End */
-
-/* Start */
-#creatingTask { 
-	text-align: center;
-	background-color: white;
-	margin-left: 5%;
-	margin-right: 5%;
-	border-radius: 8px 8px 0px 0px;
-}
-
-#creatingTask a {
-	text-decoration: none;
-}
-
-.grid-container {
-  display: grid;
-  margin-left: 5%;
-  margin-right:  5%;
-  grid-template-columns: auto auto auto;
-  background-color: white;
-  padding: 50px;
-  border-radius: 0px 0px 8px 8px;
-  
-  
-}
-
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-/*   border: 1px solid rgba(0, 0, 0, 0.8); */
-  box-shadow: 0px 1px 6px #5e5d5d;
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-  border-radius: 8px;
-  margin: 5px
-}
-
-.grid-item a {
-	text-decoration: none;
-}
-
- a:hover {
-	font-size: 34px;
-}
-
-/* End */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

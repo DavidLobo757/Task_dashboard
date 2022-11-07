@@ -2,28 +2,97 @@
 <html xmlns:th="httpe://thymeleaf.org">
   <head>
     <title>Task</title>
+    <link rel="stylesheet" type="text/css" href="/css/task.css">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1 th:text="'Task ' + ${task.taskId}"> </h1>
-    <div th:text="${task.name}"></div>
-    
-    <div th:text="${task.taskDescription}"></div>
-    <div th:text="${#temporals.format(task.dateCreated, 'MM-dd-yyyy HH:mm')}"></div>
-    
-    <p>-----------------</p>
-    <div th:text="${'User: ' + currentUser.username}"></div>
-     <p>-----------------</p>
+   <!--Nav Bar Start-->
+    <div class="container">
+         <nav class="navbar-title">
+           <h1 th:text="'Task ' + ${task.taskId}"> </h1>
+           
+         <nav class="navbar">
+          <div class="hamburger-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+          </div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a href="">About me</a>
+            </li>
+            <li class="nav-item-button">
+              <form method="post" action="/logout">
+                <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <button type="submit">Logout</button>
+              </form>
+            </li> 
+          </ul>
+         </nav>
+         </nav>
+   <!-- Nav Bar End -->
+   
+   <!-- Task Start -->
+   <div class="tContainer">
+     <div class="task-container">
+      <div class="task">
+        <div th:text="'Title: ' + ${task.name}" class="title"></div>
+        <div th:text="'Description: ' + ${task.taskDescription}" class="description"></div>
+        <div th:text="'Date created: ' + ${#temporals.format(task.dateCreated, 'MM-dd-yyyy')}" class="date"></div>
+        <div th:text="'Created by: ' + ${task.user.username}"></div>
+      </div>
+     </div>
+     
+     
+     <div class="creatingCommentContainer">
+       <form method="post" action="/creatingComment" >
+        <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <textarea rows="5" cols="25" th:field="${newComment.commentMessaage}" placeholder="Add a comment..."></textarea>
+        <br>
+        <input type="hidden" th:field="${currentUser.username}">
+        <input type="hidden" th:field="${currentUser.userId}">
+        <input type="hidden" th:field="${task.name}">
+        <input type="hidden" th:field="${task.taskId}">
+        <div class="buttonContainer">
+          <button class="createButton">Create Comment</button>
+        </div>
+      </form>
+     </div>
+     <!-- Comment Start -->
+      
+        
+        <div th:each="comment : ${comments}">
+          <div class="comment-container">
+            <div th:text="${comment.user.username }" class="commentName"></div>
+            <div th:text="${#temporals.format(comment.dateCreated, 'MM-dd-yyyy')}" class="commentDate"></div>
+            <div th:text="${comment.commentMessaage}"></div>
+            
+            <div th:if="${comment.user.userId == currentUser.userId}">
+              <form class="formDelete" method="post" th:action="@{/task/{taskId}/comment/{commentId}/delete(taskId = ${task.taskId}, commentId=${comment.commentId})}">
+                <button class="commentDelete" type="submit"> Delete </button>
+              </form>
+              <a class="commentUpdate">Update</a>
+            </div>
+            
+          </div>
+        </div>
+     
+     <!-- Comment End -->
+     
+    </div>
+      <!-- Task End -->
+   </div>
+   <!-- Nav Bar End -->
      
     
     
-    <div th:each="comment : ${comments}">
-      <div th:text="${comment.commentMessaage}"></div>
-      <form method="post" th:action="@{/task/{taskId}/comment/{commentId}/delete(taskId = ${task.taskId}, commentId=${comment.commentId})}">
-        <button id="commentDelete" type="submit"> Delete Task</button>
-      </form>
-    </div>
     
-    <a th:href="@{/task/{taskId}/createComment/(taskId=${task.taskId})}">create Comment</a>
     
 <!--     <form method="post" action="/createComment"> -->
 <!--       <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
@@ -37,6 +106,6 @@
 <!--     	var taskId='[[${task.taskId}]]' -->
 <!--     	var token='[[${_csrf.token}]]' -->
 <!--     </script> -->
-<!--     <script type="text/javascript" src="/js/task.js"></script> -->
+    <script type="text/javascript" src="/js/hamburger.js"></script>
   </body>
 </html>

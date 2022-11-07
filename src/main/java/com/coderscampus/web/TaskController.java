@@ -7,8 +7,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.coderscampus.domain.Comment;
 import com.coderscampus.domain.Task;
 import com.coderscampus.domain.User;
 import com.coderscampus.service.CommentService;
@@ -30,8 +30,9 @@ public class TaskController {
 	
 	@GetMapping("/task/{taskId}")
 	public String getTask(ModelMap model, @PathVariable Long taskId, @AuthenticationPrincipal User user) {
+		Comment newComment = new Comment();	
 		
-		
+		model.put("newComment", newComment);
 		model.put("task", taskService.findById(taskId));
 		model.put("currentUser", user);
 		model.put("userTask", userService.getUserByTaskId(taskId));

@@ -40,7 +40,7 @@ public class UserController {
 	@PostMapping("/register")
 	public String postRegister (User user) {
 		userService.createUser(user);
-		return "redirect:/users/" + user.getUserId();
+		return "redirect:/dashboard";
 		
 	}
 	
@@ -66,7 +66,7 @@ public class UserController {
 		System.out.println("Password = " + user.getPassword());
 		return true;
 	}
-	//
+	
 	
 	@GetMapping("/users")
 	public String getUsers(ModelMap model) {

@@ -3,14 +3,14 @@
   <head>
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
-    
+     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body>
     
   
     <div class="container">
          <nav class="navbar-title">
-           <h1>Dashboard</h1>
+           <h1 class="title">Dashboard</h1>
          </nav>  
          
     <!--Start-->
@@ -39,15 +39,23 @@
           </ul>
          </nav>
     <!-- End -->
-    <div id="centerForm">
-      <p>sddddddddddddddddddddddddddddddddddddddd</p>
+    
+    
+    <p>sddddddddddddddddddddddddddddddddddddddd</p>
       <p th:text="|Hello there ${user.username}|"> </p>
-        <p th:text="|${user.email}|"></p>
+      <p th:text="|${user.email}|"></p>
       
-    <a href="/task/creatingTask">Create task</a>
-    </div>
+      <!-- Create task Start -->
+      <div id="creatingTask">
+       <a href="/task/creatingTask" id="creatingTaskLink">Create task</a>
+      </div>
+    
+    
+     <!-- Create task End -->
+     
+     <!-- Grid Start -->
       <div class="grid-container">
-      
+        
         <div  th:each="task : ${tasks}" >
          <div class="grid-item">
            <a th:href="@{/task/{taskId}/(taskId=${task.taskId})}">
@@ -58,19 +66,22 @@
              <div th:text="${task.taskDescription}"></div>
              <div th:text="${task.user.userId}"></div>
              <div th:text="${task.user.username}"></div>
-             <div th:unless="${task.user.userId == '[[${user.userId}]]'}">
-              <div> Hello!</div>
+             
+             <div th:if="${task.user.userId == user.userId}">
               <form method="post" th:action="@{/dashboard/{taskId}/delete(taskId = ${task.taskId})}">
                 <button id="commentDelete" type="submit"> Delete Task</button>
               </form>
              </div>
-            
            </a>
          </div>
         </div>
       </div>
+      <!-- Grid End -->
+      
+      
     </div>
-    <script type="text/javascript" src="/js/dashboardCSS.js"></script>
+    
+    <script type="text/javascript" src="/js/hamburger.js"></script>
   </body>
   
   

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="httpe://thymeleaf.org">
+  <head>
+    <title>Task</title>
+    
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/profile.css">
+  </head>
+  <body>
+   <!--Nav Bar Start-->
+    <div class="container">
+         <nav class="navbar-title">
+           <h1>Profile</h1>
+         </nav>  
+         <nav class="navbar">
+          <div class="hamburger-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+          </div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a href="">About me</a>
+            </li>
+            <li class="nav-item-button">
+              <form method="post" action="/logout">
+                <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <button type="submit">Logout</button>
+              </form>
+            </li> 
+          </ul>
+         </nav>
+   <!-- Nav Bar End -->
+   
+   <!--  Profile Container Start -->
+   <div id="profile-container">
+   
+     <form method="post" action="">
+      <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <span th:text="'Username: '"></span>
+      <input type="text" th:field="${user.username}" th:value="${user.username}">
+      <br>
+      <span th:text="'Password: '"></span>
+      <input type="password" th:field="${user.password}">
+      <br>
+      <span th:text="'Email: '"></span>
+      <input type="text" th:field="${user.email}">
+      <br>
+      <button type="submit">Update</button>
+     </form>
+     
+   </div>
+   <!--  Profile Container End -->
+    </div>
+   <!-- Nav Bar End -->
+    <script type="text/javascript" src="/js/hamburger.js"></script>
+  </body>
+</html>
