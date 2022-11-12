@@ -44,5 +44,9 @@ public class TaskService {
 			return  taskComments.orElse(new Task());
 		}
 		
+		public Task saveTask(Task task) {
+			
+			return taskRepo.save(task);
+		}
 		
 }

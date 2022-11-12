@@ -59,6 +59,18 @@ public class TaskController {
 		taskService.deleteById(taskId);
 		return "redirect:/dashboard";
 	}
+	
+	@PostMapping("/task/{taskId}/updateTask")
+	public String updateTask(@PathVariable Long taskId,Task task) {
+		System.out.println(taskId);
+		Task currentTask = taskService.findById(task.getTaskId());
+		
+		currentTask.setName(task.getName());
+		currentTask.setTaskDescription(task.getTaskDescription());
+		
+		taskService.saveTask(currentTask);
+		return "redirect:/task/" + currentTask.getTaskId();
+	}
 
 	
 }

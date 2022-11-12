@@ -1,3 +1,23 @@
+//var updateTaskButton = document.querySelector("updateTaskButton")
+//
+//
+//updateTaskButton.addEventListener('click', clicked);
+//
+//
+//function clicked() {
+//	document.getElementById('inputTaskDescriptionEdit').style.display='block';
+//}
+
+
+
+
+
+
+
+
+
+
+
 
 
 //var commentBox = document.getElementById("commentBox")
@@ -33,4 +53,5 @@
 //	}
 //	
 //}
-
+//
+//

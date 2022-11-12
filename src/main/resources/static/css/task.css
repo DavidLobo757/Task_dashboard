@@ -174,6 +174,10 @@ li a {
 	
 }
 
+.updateTaskCotnainer {
+	text-align: center;
+}
+
 .task {
 	background-color: white;
 	padding-top: 15px;
@@ -187,6 +191,48 @@ li a {
 
 .task div {
 	font-size: 30px;
+}
+
+.updateTaskButton {
+	border-style: none;
+	background-color: inherit;
+	font-size: 14px;
+	display: none;
+	text-align:center;
+}
+
+.updateTaskButton:hover {
+	font-weight: bold;
+	
+}
+
+.secretInput {
+	display: none;
+	text-align: center;
+}
+
+#hideTaskButton {
+	background: none;
+	border: none;
+	color: #494949;
+	
+}
+
+#hideTaskButton:hover {
+	font-weight: bold;
+	
+}
+
+#editTaskButton {
+	background: none;
+	border: none;
+	color: #494949;
+	text-decoration-line: underline;
+}
+
+#editTaskButton:hover {
+	font-weight: bold;
+	
 }
 
 /* COMMENTS*/

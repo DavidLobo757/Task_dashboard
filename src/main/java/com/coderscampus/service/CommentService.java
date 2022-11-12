@@ -3,6 +3,7 @@ package com.coderscampus.service;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,10 @@ public class CommentService {
 			return commentRepo.save(comment);
 		}
 		
+		public Comment findById(Long commentId) {
+			Optional<Comment> commentOpt = commentRepo.findById(commentId);
+			return commentOpt.orElse(new Comment());
+		}
 		
 		
 }

@@ -39,10 +39,21 @@ public class CommentController {
 		return "createComment";
 	}
 	
+	@GetMapping("/comment/{commentId}") 
+	public String editComment(ModelMap model, @AuthenticationPrincipal User user, @PathVariable Long commentId) {
+		Comment comment = commentService.findById(commentId);
+//		User user = userService.findByUserIdWithEmail(comment.getUser());
+		model.put("comment", comment);
+		model.put("currentUser", user);
+		return "editComment";
+	}
+	
 	@PostMapping("/creatingComment")
 	public String createComment(Comment comment,  User user, Task task) {
 		commentService.createComment(comment, user, task);
-		return "redirect:/dashboard";
+		long taskId = task.getTaskId();
+		String url = "/task/" + taskId;
+		return "redirect:" + url;
 	}	
 	
 	@PostMapping("/task/{taskId}/comment/{commentId}/delete")

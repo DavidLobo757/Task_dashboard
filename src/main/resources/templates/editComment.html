@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="httpe://thymeleaf.org">
+  <head>
+    <title>Task</title>
+    <link rel="stylesheet" type="text/css" href="/css/task.css">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body>
+   <!--Nav Bar Start-->
+    <div class="container">
+         <nav class="navbar-title">
+           <h1 th:text="'Comment ' + ${comment.commentId}"> </h1>
+           
+         <nav class="navbar">
+          <div class="hamburger-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+          </div>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a href="">About me</a>
+            </li>
+            <li class="nav-item-button">
+              <form method="post" action="/logout">
+                <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <button type="submit">Logout</button>
+              </form>
+            </li> 
+          </ul>
+         </nav>
+         </nav>
+   <!-- Nav Bar End -->
+   
+  
+     <!-- Comment Start -->
+      
+        
+        
+          <div class="comment-container">
+<!--             <div th:text="${comment.user.username }" class="commentName"></div> -->
+            <div th:text="${#temporals.format(comment.dateCreated, 'MM-dd-yyyy')}" class="commentDate"></div>
+            <div th:text="${comment.commentMessaage}"></div>
+            
+<!--             <div th:if="${comment.user.userId == currentUser.userId}"> -->
+<!--               <form class="formDelete" method="post" th:action="@{/task/{taskId}/comment/{commentId}/delete(taskId = ${task.taskId}, commentId=${comment.commentId})}"> -->
+<!--                 <button class="commentDelete" type="submit"> Delete </button> -->
+<!--               </form> -->
+              
+              <!-- UPDATE COMMENT -->
+<!--               <form class="commentFormUpdate" method="post" th:action="@{/task/{taskId}/comment/{commentId}/update(taskId = ${task.taskId}, commentId=${comment.commentId})}"> -->
+<!--                 <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
+                <label></label>
+<!--                 <div th:text="${comment.user.username }" class="commentName"></div> -->
+                <div th:text="${comment.commentMessaage}"></div>
+<!--                 <input type="text" th:field="${comment.commentMessaage}"> -->
+                <button type="submit" class="updateCommentButton" id="updateCommentButton">Submit changes</button>
+<!--               </form> -->
+              <button type="button" id="hideCommentButton"
+                      onclick="">
+                Hide
+              </button>
+              <button type="button" id="editCommentButton"
+                      onclick="">
+                 Edit
+              </button>
+              
+            </div>
+            
+          </div>
+<!--         </div> -->
+     
+     <!-- Comment End -->
+     
+   
+   
+  
+   <!-- Nav Bar End -->
+     
+    
+    
+    
+    
+
+    <script type="text/javascript" src="/js/hamburger.js"></script>
+<!--     <script type="text/javascript" src="/js/task.js"></script> -->
+  </body>
+</html>
