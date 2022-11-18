@@ -62,5 +62,9 @@ public class CommentService {
 			return commentOpt.orElse(new Comment());
 		}
 		
+		public Comment saveComment (Comment comment) {
+			return commentRepo.save(comment);		
+		}
+		
 		
 }

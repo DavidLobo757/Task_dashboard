@@ -1,88 +1,112 @@
 <!DOCTYPE html>
 <html xmlns:th="httpe://thymeleaf.org">
-  <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
-     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    
-  
-    <div class="container">
-         <nav class="navbar-title">
-           <h1 class="title">Dashboard</h1>
-         </nav>  
-         
-    <!--Start-->
-         <nav class="navbar">
-          <div class="hamburger-menu">
-            <div class="line line-1"></div>
-            <div class="line line-2"></div>
-            <div class="line line-3"></div>
-          </div>
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a href="">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a href="">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a href="">About me</a>
-            </li>
-            <li class="nav-item-button">
-              <form method="post" action="/logout">
-                <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                <button type="submit">Logout</button>
-              </form>
-            </li> 
-          </ul>
-         </nav>
-    <!-- End -->
-    
-    
-    <p>sddddddddddddddddddddddddddddddddddddddd</p>
-      <p th:text="|Hello there ${user.username}|"> </p>
-      <p th:text="|${user.email}|"></p>
-      
-      <!-- Create task Start -->
-      <div id="creatingTask">
-       <a href="/task/creatingTask" id="creatingTaskLink">Create task</a>
-      </div>
-    
-    
-     <!-- Create task End -->
-     
-     <!-- Grid Start -->
-      <div class="grid-container">
-        
-        <div  th:each="task : ${tasks}" >
-         <div class="grid-item">
-           <a th:href="@{/task/{taskId}/(taskId=${task.taskId})}">
-             <div th:text="${task.taskId}"></div>
-             <div th:text="${task.name}"></div>
-             <div th:text="${task.taskId}"></div>
-             <div th:text="${#temporals.format(task.dateCreated, 'MM-dd-yyyy HH:mm')}"></div>
-             <div th:text="${task.taskDescription}"></div>
-             <div th:text="${task.user.userId}"></div>
-             <div th:text="${task.user.username}"></div>
-             
-             <div th:if="${task.user.userId == user.userId}">
-              <form method="post" th:action="@{/dashboard/{taskId}/delete(taskId = ${task.taskId})}">
-                <button id="commentDelete" type="submit"> Delete Task</button>
-              </form>
-             </div>
-           </a>
-         </div>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+  rel="stylesheet">
+</head>
+<body>
+
+
+  <div class="container">
+    <nav class="navbar-title">
+      <h1 th:text="'Dashboard'"></h1>
+
+      <nav class="navbar">
+        <div class="hamburger-menu">
+          <div class="line line-1"></div>
+          <div class="line line-2"></div>
+          <div class="line line-3"></div>
         </div>
+
+        <ul class="nav-list">
+          <li class="nav-item"><a href="/dashboard"
+            class="nav-item-link">Dashboard</a></li>
+          <li class="nav-item">
+            <form method="post" action="/logout">
+              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+              <button type="submit" class="logoutButton"> Logout</button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </nav>
+
+    <!-- Create task Start -->
+    
+    
+    <div id="creatingTask">
+     <div class="formContainerN">
+      
+     
+        <form method="post" action="/createTask" class="creatingNewTask">
+            <label id="createNewTask">Create new task</label>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <input type="hidden" th:field="${user.userId}">
+            <div>
+             <textarea rows="5" cols="25" th:field="${newTask.name}" placeholder="title" id="newTaskTitle" class="secret"></textarea>
+            </div>
+            <div>
+              <textarea rows="5" cols="25" th:field="${newTask.taskDescription}" placeholder="Add a description..." id="newTaskDescription" class="secret"></textarea>
+            </div>
+            <div>
+             <button type="submit" id="newTaskSubmit" class="secret">Submit new Task</button>
+            </div>
+        </form>
+        
+       
+      
+        
       </div>
-      <!-- Grid End -->
-      
-      
     </div>
     
-    <script type="text/javascript" src="/js/hamburger.js"></script>
-  </body>
+    
+    
+    
+<!--     onclick="document.getElementById('newTaskTitle').setAttribute('style', 'display: block; text-align: center; justify-content: center;'), -->
+<!--                    document.getElementById('newTaskDescription').setAttribute('style', 'display: block; text-align: center; width: 100%;'), -->
+<!--                    document.getElementById('newTaskSubmit').setAttribute('style', 'display: block; width: 100%;  border: none;'), -->
+<!--                    document.getElementById('hideNewTaskButton').setAttribute('style', 'display: block; background-color: inherit; border: none;'), -->
+<!--                    document.getElementById('createNewTask').style.display='none'" -->
+    
+<!--     onclick="document.getElementById('hideNewTaskButton').style.display='none', -->
+<!--                      document.getElementById('newTaskTitle').style.display='none', -->
+<!--                      document.getElementById('newTaskDescription').style.display='none', -->
+<!--                      document.getElementById('newTaskSubmit').style.display='none', -->
+<!--                      document.getElementById('createNewTask').setAttribute('style', 'display: block; width: 100%; background-color: inherit; border: none;')" -->
+    
+    
+    <!-- Create task End -->
+
+    <!-- Grid Start -->
+    <div class="grid-container">
+      <div th:each="task : ${tasks}">
+        <div class="grid-item">
+          <a th:href="@{/task/{taskId}/(taskId=${task.taskId})}" class="taskLink">
+            <div th:hidden="${task.taskId}"></div>
+            <div th:hidden="${task.user.userId}"></div>
+            <div th:text="${task.name}" class="taskTitle"></div>
+            <div th:text="${task.taskDescription}" class="taskDescription"></div>
+            <span th:text="'Created By: ' + ${task.user.username} + ' on ' + ${#temporals.format(task.dateCreated, 'MM-dd-yyyy')}" class="taskCreatedBy"></span>
+            <div th:if="${task.user.userId == user.userId}">
+              <form method="post" th:action="@{/dashboard/{taskId}/delete(taskId = ${task.taskId})}">
+                <button id="commentDelete" class="deleteTaskButton" type="submit">Delete Task</button>
+              </form>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Grid End -->
+
+
+  </div>
+  <script type="text/javascript" src="/js/dashboard.js"></script>
+  <script type="text/javascript" src="/js/hamburger.js"></script>
   
-  
+</body>
+
+
 </html>

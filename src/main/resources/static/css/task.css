@@ -2,7 +2,7 @@
 
 * {
 	margin: 0%;
-	color: #000000;
+	color: black;
 }
 
 body {
@@ -15,43 +15,29 @@ a {
 	text-decoration: none;
 }
 
-
-
-#centerPage {
-	text-align: center;
-}
-
-#centerFOrm {
-	text-align: center;
-}
-
 /* Nav Bar Start */
-
 .navbar-title {
 	padding-top: 2%;
 	height: 7%;
 	width: 100%;
 	margin-right: 10%;
-    text-align: center;
+	text-align: center;
 	background-color: #0c7cfc;
 }
 
 .navbar-title h1 {
 	color: white;
-	
 }
-
 
 .container {
 	width: 100%;
 	height: 100vh;
-
 }
 
 .navbar {
 	width: 150px;
 	height: 150%;
-	background-color: #dddddd;
+	background-color: #0c7cfc;
 	position: absolute;
 	top: 0;
 	right: -300px;
@@ -60,8 +46,6 @@ a {
 	margin-top: 5.8%;
 	transition: right .8s cubic-bezier(1, 0, 0, 1);
 }
-
-
 
 .change {
 	right: 0;
@@ -76,19 +60,19 @@ a {
 	cursor: pointer;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;	
+	justify-content: space-around;
 }
 
 .line {
 	width: 100%;
 	height: 3px;
-	background-color: black;
+	background-color: white;
 	transition: all 0.8s;
 }
 
 .change .line-1 {
 	transform: rotateZ(-405deg) translate(-8px, 6px);
-	background-color: #c12501;
+	background-color: #f91400;
 }
 
 .change .line-2 {
@@ -97,19 +81,7 @@ a {
 
 .change .line-3 {
 	transform: rotateZ(405deg) translate(-8px, -6px);
-	background-color: #c12501;
-}
-
-.nav-list {
-	text-align: left;
-	margin-top: 35%;
-}
-
-.nav-item {
-	list-style: none;
-	margin-right: 100px;
-	margin-top: 10%
-	
+	background-color: #f91400;
 }
 
 .nav-link {
@@ -122,8 +94,7 @@ a {
 	position: relative;
 }
 
-.nav-link::before,
-.nav-link::after {
+.nav-link::before, .nav-link::after {
 	content: "";
 	width: 100%;
 	height: 2px;
@@ -148,30 +119,64 @@ a {
 	transform: scaleX(1);
 }
 
-li a {
-	text-decoration: none;
+.nav-list {
+	justify-content: center;
+	text-align: left;
+	margin-top: 35%;
+	margin-left: 5px;
 }
 
+.nav-item {
+	list-style: none;
+	margin-right: 100px;
+	margin-top: 10%;
+}
+
+.nav-item-link {
+	font-size: 16px;
+	margin-left: 5px;
+}
+
+.nav-item-link:hover {
+	font-size: 18px;
+}
+
+li a {
+	text-decoration: none;
+	font-size: 16px;
+	color: white;
+}
+
+.logoutButton {
+	border-style: none;
+	background-color: inherit;
+	font-size: 16px;
+	color: white;
+}
+
+.logoutButton:hover {
+	cursor: pointer;
+	font-size: 18px;
+}
 
 /* Nav Bar End */
-
 
 /* Task Start */
 
 /* TASK*/
 .tContainer {
 	background-color: white;
-	padding-top: 5px;
+	padding-top: 0.5px;
 	padding-bottom: 35px;
-	margin-top: 50px;
+	margin-top: 30px;
 	margin-right: 30%;
 	margin-left: 30%;
 	border-radius: 6px;
 	box-shadow: 0px 1px 6px #5e5d5d;
 }
+
 .task-container {
 	text-align: center;
-	
 }
 
 .updateTaskCotnainer {
@@ -182,15 +187,25 @@ li a {
 	background-color: white;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	margin-top: 100px;
+	margin-top: 45px;
 	margin-right: 6%;
 	margin-left: 6%;
 	border-radius: 6px;
 	box-shadow: 0px 1px 6px #5e5d5d;
 }
 
-.task div {
+.taskTitle {
 	font-size: 30px;
+	margin-bottom: 5px;
+}
+
+.taskDescription {
+	font-size: 22px;
+}
+
+.taskCreatedBy {
+	margin-top: 10px;
+	font-size: 12px;
 }
 
 .updateTaskButton {
@@ -198,12 +213,11 @@ li a {
 	background-color: inherit;
 	font-size: 14px;
 	display: none;
-	text-align:center;
+	text-align: center;
 }
 
 .updateTaskButton:hover {
 	font-weight: bold;
-	
 }
 
 .secretInput {
@@ -215,12 +229,10 @@ li a {
 	background: none;
 	border: none;
 	color: #494949;
-	
 }
 
 #hideTaskButton:hover {
 	font-weight: bold;
-	
 }
 
 #editTaskButton {
@@ -232,14 +244,12 @@ li a {
 
 #editTaskButton:hover {
 	font-weight: bold;
-	
 }
 
 /* COMMENTS*/
-
 .creatingCommentContainer {
-	text-align:left;
-	margin-top: 40px; 
+	text-align: left;
+	margin-top: 40px;
 	margin-left: 7%;
 	margin-right: 1%;
 }
@@ -254,34 +264,28 @@ textarea {
 	width: 93%;
 	height: 25px;
 	border: none;
-	
 	border-bottom: solid grey;
-	
-    overflow: auto;
-    outline-style: none;
-	
-   
+	overflow: auto;
+	outline-style: none;
 }
 
 .buttonContainer {
 	justify-content: center;
-    text-align: center;
-    margin-right: 80%;
-    margin-left: -6%;
+	text-align: center;
+	margin-right: 80%;
+	margin-left: -6%;
 }
 
 .createButton {
-	border:none;
+	border: none;
 	border-radius: 6px;
-    background-image:none;
-    background-color: #aaaaaa;
-    color: white;
-    justify-content: center;
-    text-align: center;
-    padding: 5px;
-    margin-left: 15%;
-    
-    
+	background-image: none;
+	background-color: #aaaaaa;
+	color: white;
+	justify-content: center;
+	text-align: center;
+	padding: 5px;
+	margin-left: 15%;
 }
 
 .createButton:hover {
@@ -293,12 +297,14 @@ textarea {
 	background-color: white;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	margin-top: 50px;
+	margin-top: 25px;
 	margin-right: 6%;
 	margin-left: 6%;
+	margin-bottom: 25px;
 	border-radius: 6px;
 	box-shadow: 0px 1px 6px #5e5d5d;
 	padding-left: 30px;
+	border-radius: 6px;
 }
 
 .commentName {
@@ -311,10 +317,8 @@ textarea {
 }
 
 .formDelete {
-	
 	margin: -5px;
 	display: inline;
-	
 }
 
 .commentDelete {
@@ -336,9 +340,12 @@ textarea {
 	font-weight: 550;
 }
 
+.editCommentLink {
+	font-size: 14px;
+}
+
+.editCommentLink:hover {
+	font-size: 14px;
+	font-weight: bold;
+}
 /* Task End */
-
-
-
-
-

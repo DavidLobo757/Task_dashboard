@@ -68,25 +68,25 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/users")
-	public String getUsers(ModelMap model) {
-		return "users";
-	}
-	
-	
-	@GetMapping("/users/{id}")
-	public String getUser(ModelMap model, @PathVariable Long id) {
-		User currentUser = userService.findByUserIdWithEmail(id);
-		model.put("user", currentUser);
-		return "users";
-	}
-	
-	
-	@PostMapping("/users/{id}")
-	public String postUser (@PathVariable Long id) {
-		User currentUser = userService.findByUserIdWithEmail(id);
-		return "redirect:/users/" + currentUser.getUserId();
-	}
+//	@GetMapping("/users")
+//	public String getUsers(ModelMap model) {
+//		return "users";
+//	}
+//	
+//	
+//	@GetMapping("/users/{id}")
+//	public String getUser(ModelMap model, @PathVariable Long id) {
+//		User currentUser = userService.findByUserIdWithEmail(id);
+//		model.put("user", currentUser);
+//		return "users";
+//	}
+//	
+//	
+//	@PostMapping("/users/{id}")
+//	public String postUser (@PathVariable Long id) {
+//		User currentUser = userService.findByUserIdWithEmail(id);
+//		return "redirect:/users/" + currentUser.getUserId();
+//	}
 	
 	
 }

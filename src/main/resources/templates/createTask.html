@@ -1,63 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="httpe://thymeleaf.org">
-  <head>
-    <title>Task</title>
-    <link rel="stylesheet" type="text/css" href="/css/createTask.css">
-  </head>
-  <body>
-    
-    <div class="container">
-         <nav class="navbar-title">
-           <H1>Task</H1>
-           
-         <nav class="navbar">
-          <div class="hamburger-menu">
-            <div class="line line-1"></div>
-            <div class="line line-2"></div>
-            <div class="line line-3"></div>
-          </div>
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a href="">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a href="">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a href="">About me</a>
-            </li>
-            <li class="nav-item-button">
-              <form method="post" action="/logout">
-                <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                <button type="submit">Logout</button>
-              </form>
-            </li> 
-          </ul>
-         </nav>
-         </nav>
-   <!-- Nav Bar End -->
-   
-  
-     <!-- Comment Start -->
-       <form method="post" action="/createTask" >
-      <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-      <label>Task Name: </label>
-      <input type="text" th:field="${task.name}">
-      <br>
-      <label>Description: </label>
-      <br>
+<head>
+<title>Task</title>
+<link rel="stylesheet" type="text/css" href="/css/createTask.css">
+</head>
+<body>
+
+  <div class="container">
+    <nav class="navbar-title">
+      <H1>Task</H1>
+
+      <nav class="navbar">
+        <div class="hamburger-menu">
+          <div class="line line-1"></div>
+          <div class="line line-2"></div>
+          <div class="line line-3"></div>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
+          <li class="nav-item"><a href="">Profile</a></li>
+          <li class="nav-item"><a href="">About me</a></li>
+          <li class="nav-item-button">
+            <form method="post" action="/logout">
+              <input type="hidden" th:name="${_csrf.parameterName}"D
+                th:value="${_csrf.token}">
+              <button type="submit">Logout</button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </nav>
+    <!-- Nav Bar End -->
+
+
+    <!-- Comment Start -->
+    <form method="post" action="/createTask">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> 
+      <label>Task Name: </label> 
+      <input type="text" th:field="${task.name}"> 
+      <br> 
+      <label>Description: </label> <br>
       <textarea rows="5" cols="25" th:field="${task.taskDescription}"></textarea>
-      <br>
-      <input type="hidden" th:field="${currentUser.username}">
+      <br> <input type="hidden" th:field="${currentUser.username}">
       <input type="hidden" th:field="${currentUser.userId}">
       <button id="submitButton">Submit</button>
     </form>
-        
-        
-          
-            
-          </div>
-   
-    <script type="text/javascript" src="/js/hamburger.js"></script>
-  </body>
+
+
+
+
+  </div>
+
+  <script type="text/javascript" src="/js/hamburger.js"></script>
+</body>
 </html>

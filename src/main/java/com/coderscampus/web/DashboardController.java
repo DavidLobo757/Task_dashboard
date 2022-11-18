@@ -39,31 +39,32 @@ public class DashboardController {
 	
 	@GetMapping("/dashboard")
 	public String getDashBoard (@AuthenticationPrincipal User user, ModelMap model) {
-		
+		Task newTask = new Task();
 		List<Task> taskList = taskService.findAll();
 		
+		model.put("newTask", newTask);
 		model.put("user", user);
 		model.put("email", user.getEmail());
 		model.put("tasks", taskList);
 		return "dashboard";
 	}
 	
-	@GetMapping("/profile")
-	public String getProfile (@AuthenticationPrincipal User user, ModelMap model) {
-		model.put("user", user);
-		model.put("email", user.getEmail());
-		return "profile";
-	}
+//	@GetMapping("/profile")
+//	public String getProfile (@AuthenticationPrincipal User user, ModelMap model) {
+//		model.put("user", user);
+//		model.put("email", user.getEmail());
+//		return "profile";
+//	}
 	
-	@PostMapping("/profile")
-	public String postProfile (User user) {
-		Email email = user.getEmail();
-		
-		userService.saveUser(user);
-		userService.saveEmail(user, email);
-		return "redirect:/profile";
-		
-	}
+//	@PostMapping("/profile")
+//	public String postProfile (User user) {
+//		Email email = user.getEmail();
+//		
+//		userService.saveUser(user);
+//		userService.saveEmail(user, email);
+//		return "redirect:/profile";
+//		
+//	}
 	
 	
 	

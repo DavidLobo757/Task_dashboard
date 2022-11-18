@@ -48,6 +48,14 @@ public class CommentController {
 		return "editComment";
 	}
 	
+	@PostMapping("/comment/{commentId}/updateComment")
+	public String editingComment(Comment comment, @AuthenticationPrincipal User user) {
+		commentService.saveComment(comment);
+		Task task = comment.getTask();
+		Long taskId = task.getTaskId();
+		return "redirect:/task/" + taskId;
+	}
+	
 	@PostMapping("/creatingComment")
 	public String createComment(Comment comment,  User user, Task task) {
 		commentService.createComment(comment, user, task);
