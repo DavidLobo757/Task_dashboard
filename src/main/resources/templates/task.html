@@ -49,50 +49,54 @@
 
           <div class="updateTaskContainer">
             <div th:if="${task.user.username == currentUser.username}">
-              <form method="post" th:action="@{/task/{taskId}/updateTask(taskId = ${task.taskId})}">
+              <form method="post" th:action="@{/task/{taskId}/updateTask(taskId = ${task.taskId})}" class="editTaskForm">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> 
-                <label class="secretInput" id="hiddenTaskLabel">Task: </label> 
-                <input type="text" th:field="${task.name}" class="secretInput" id="inputTaskNameEdit"> 
-                <label class="secretInput" id="hiddenDescriptionLabel">Description: </label> 
-                <input type="text" th:field="${task.taskDescription}" class="secretInput" id="inputTaskDescriptionEdit">
                 <input type="hidden" th:field="${task.taskId}">
                 <input type="hidden" th:field="${task.dateCreated}">
                 <input type="hidden" th:field="${task.user.username}">
-                <button type="submit" class="updateTaskButton" id="updateTaskButton">Submit Changes</button>
+                
+                <div>
+                  <textarea  th:field="${task.name}" class="secret" id="inputTaskNameEdit"></textarea>
+                </div>
+                <div>
+                  <textarea  th:field="${task.taskDescription}" class="secret" id="inputTaskDescriptionEdit"></textarea>
+                </div>
+                <div>
+                  <button type="submit" class="secret" id="updateTaskButton">Submit Changes</button>
+                </div>
+                <div>
+                  <label id="toggleEditButton">Edit</label>
+                </div>
+                
               </form>
             </div>
           </div>
-
-          <button type="button" class="secretInput" id="hideTaskButton"
-            onclick="document.getElementById('inputTaskDescriptionEdit').style.display='none',
-                    document.getElementById('inputTaskNameEdit').style.display='none',
-                    document.getElementById('updateTaskButton').style.display='none',
-                    document.getElementById('hideTaskButton').style.display='none',
-                    document.getElementById('editTaskButton').setAttribute('style', 'display: block; width: 100%;'),
-                    document.getElementById('hiddenTaskLabel').style.display='none',
-                    document.getElementById('hiddenDescriptionLabel').style.display='none'">
-
-            Hide</button>
-
-          <button type="button" id="editTaskButton"
-            onclick="document.getElementById('inputTaskDescriptionEdit').setAttribute('style', 'display: inline; '),
-                    document.getElementById('inputTaskNameEdit').setAttribute('style', 'display: inline; '),
-                    document.getElementById('updateTaskButton').setAttribute('style', 'display: inline; width: 100%; background-color: white;'),
-                    document.getElementById('hideTaskButton').setAttribute('style', 'display: block; width: 100%; '),
-                    document.getElementById('editTaskButton').style.display='none',
-                    document.getElementById('hiddenTaskLabel').setAttribute('style', 'display: inline; width: 100%; font-size: 18px;')
-                    document.getElementById('hiddenDescriptionLabel').setAttribute('style', 'display: inline; width: 100%; font-size: 18px;')">
-            Edit
-          </button>
-
+          
         </div>
       </div>
 
 
+
+<!-- onclick="document.getElementById('inputTaskDescriptionEdit').style.display='none', -->
+<!--                     document.getElementById('inputTaskNameEdit').style.display='none', -->
+<!--                     document.getElementById('updateTaskButton').style.display='none', -->
+<!--                     document.getElementById('hideTaskButton').style.display='none', -->
+<!--                     document.getElementById('editTaskButton').setAttribute('style', 'display: block; width: 100%;'), -->
+<!--                     document.getElementById('hiddenTaskLabel').style.display='none', -->
+<!--                     document.getElementById('hiddenDescriptionLabel').style.display='none'" -->
+
+<!-- onclick="document.getElementById('inputTaskDescriptionEdit').setAttribute('style', 'display: inline; '), -->
+<!--                     document.getElementById('inputTaskNameEdit').setAttribute('style', 'display: inline; '), -->
+<!--                     document.getElementById('updateTaskButton').setAttribute('style', 'display: inline; width: 100%; background-color: white;'), -->
+<!--                     document.getElementById('hideTaskButton').setAttribute('style', 'display: block; width: 100%; '), -->
+<!--                     document.getElementById('editTaskButton').style.display='none', -->
+<!--                     document.getElementById('hiddenTaskLabel').setAttribute('style', 'display: inline; width: 100%; font-size: 18px;') -->
+<!--                     document.getElementById('hiddenDescriptionLabel').setAttribute('style', 'display: inline; width: 100%; font-size: 18px;')" -->
+
       <div class="creatingCommentContainer">
         <form method="post" action="/creatingComment">
           <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-          <textarea rows="5" cols="25"th:field="${newComment.commentMessaage}" placeholder="Add a comment..."></textarea>
+          <textarea rows="5" cols="25" th:field="${newComment.commentMessaage}" placeholder="Add a comment..." id="createCommentTextarea"></textarea>
           <br> 
           <input type="hidden" th:field="${currentUser.username}"> 
           <input type="hidden" th:field="${currentUser.userId}"> 
@@ -158,19 +162,9 @@
 
 
 
-  <!--     <form method="post" action="/createComment"> -->
-  <!--       <input  type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
-  <!--       <input type="text" id="commentBox"> -->
-  <!--       <button></button> -->
-  <!--     </form> -->
-
-  <!--     <script th:inline="javascript"> -->
-  <!--         var taskName='[[${task.name}]]' -->
-  <!--     	var userId='[[${currentUser.userId}]]' -->
-  <!--     	var taskId='[[${task.taskId}]]' -->
-  <!--     	var token='[[${_csrf.token}]]' -->
-  <!--     </script> -->
-  <script type="text/javascript" src="/js/hamburger.js"></script>
+  
   <script type="text/javascript" src="/js/task.js"></script>
+  <script type="text/javascript" src="/js/hamburger.js"></script>
+  
 </body>
 </html>

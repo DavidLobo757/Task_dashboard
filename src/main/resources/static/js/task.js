@@ -1,3 +1,45 @@
+
+
+
+
+const toggleEditButton = document.querySelector('#toggleEditButton');
+
+const hiddens = document.querySelectorAll('.secret');
+
+
+
+hiddens.forEach((hidden) =>{
+	toggleEditButton.addEventListener('click', () => {
+		if(hidden.style.display === 'none') {
+			hidden.style.display = 'inline';
+			toggleEditButton.innerText="Hide";
+		} else {
+			hidden.style.display = 'none';
+			toggleEditButton.innerText="Edit";
+		}
+	});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //var updateTaskButton = document.querySelector("updateTaskButton")
 //
 //
@@ -7,15 +49,6 @@
 //function clicked() {
 //	document.getElementById('inputTaskDescriptionEdit').style.display='block';
 //}
-
-
-
-
-
-
-
-
-
 
 
 

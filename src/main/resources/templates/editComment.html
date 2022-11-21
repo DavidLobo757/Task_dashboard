@@ -38,35 +38,24 @@
     </nav>
     <!-- Nav Bar End -->
 
-
     <!-- Comment Start -->
-
-
-
     <div class="comment-container">
       <!--             <div th:text="${comment.user.username }" class="commentName"></div> -->
-      <div
-        th:text="${#temporals.format(comment.dateCreated, 'MM-dd-yyyy')}"
-        class="commentDate"></div>
+      
       <div th:text="${comment.commentMessaage}"></div>
 
-      <form method="post"
-        th:action="@{/comment/{commentId}/updateComment(commentId = ${comment.commentId})}">
-        <input type="text" th:field="${comment.commentMessaage}"
-          class="editCommentInput"> <input type="hidden"
-          th:field="${comment.commentId}"> <input type="hidden"
-          th:field="${comment.dateCreated}"> <input
-          type="hidden" th:field="${comment.user.userId}"> <input
-          type="hidden" th:field="${comment.task.taskId}"> <br>
-        <button type="submit" class="updateCommentButton"
-          id="updateCommentButton">Submit changes</button>
+      <form method="post" th:action="@{/comment/{commentId}/updateComment(commentId = ${comment.commentId})}">
+        <input type="hidden"th:field="${comment.commentId}"> 
+        <input type="hidden" th:field="${comment.dateCreated}"> 
+        <input type="hidden" th:field="${comment.user.userId}"> 
+        <input type="hidden" th:field="${comment.task.taskId}">
+        <textarea th:field="${comment.commentMessaage}" class="editCommentTextarea"></textarea>
+        <br>
+        <button type="submit" class="updateCommentButton"id="updateCommentButton">Submit changes</button>
       </form>
-      <!--                 <input type="text" th:field="${comment.commentMessaage}"> -->
-
     </div>
   </div>
 
   <script type="text/javascript" src="/js/hamburger.js"></script>
-  <!--     <script type="text/javascript" src="/js/task.js"></script> -->
 </body>
 </html>

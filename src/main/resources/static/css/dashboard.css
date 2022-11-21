@@ -189,7 +189,6 @@ li a {
 
 textarea {
 	resize: none;
-	
 	height: 25px;
 	overflow: hidden;
 	outline-style: none;
@@ -322,7 +321,7 @@ textarea {
 }
 
 .deleteTaskButton:hover {
-	
+	cursor: pointer;
 	font-size: 14px;
 	font-weight: bold;
 	color: red;
@@ -343,9 +342,7 @@ textarea {
 	margin-bottom: -5%;
 }
 
-.Hidden {
-	
-}
+
 
 /* Task Grid End*/
 
