@@ -66,6 +66,7 @@ form input{
 	background-color: #49c1a2;
 	color: white;
 	border-radius: 6px;
+	cursor: pointer;
 }
 
 .passwordInputs {
@@ -83,8 +84,6 @@ form input{
 
 .button:hover {
 	text-align:center;
-	
-	
 	box-shadow: 0px 1px 6px #5e5d5d;
 }
 
@@ -97,4 +96,12 @@ form input:hover{
 }
 
 
+
+#passwordEyeIcon {
+	cursor: pointer;
+}
+
+#confirmPasswordEyeIcon {
+	cursor: pointer;
+}
 

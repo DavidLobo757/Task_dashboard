@@ -223,6 +223,7 @@ textarea {
 
 #createNewTask:hover {
 	font-size: 18px;
+	cursor: pointer;
 }
 
 #newTaskTitle {
@@ -271,6 +272,7 @@ textarea {
 
 #newTaskSubmit:hover {
 	font-size: 18px;
+	cursor: pointer;
 }
 
 
