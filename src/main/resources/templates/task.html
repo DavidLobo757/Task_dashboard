@@ -48,7 +48,7 @@
           <div th:text="'Created by: ' + ${task.user.username} + ' on ' + ${#temporals.format(task.dateCreated, 'MM-dd-yyyy')}" class="taskCreatedBy"></div>
 
           <div class="updateTaskContainer">
-            <div th:if="${task.user.username == currentUser.username}">
+            <div th:if="${task.user.username == currentUser.username or authorities.authority == 'ROLE_ADMIN'}">
               <form method="post" th:action="@{/task/{taskId}/updateTask(taskId = ${task.taskId})}" class="editTaskForm">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> 
                 <input type="hidden" th:field="${task.taskId}">
@@ -113,12 +113,9 @@
       <div th:each="comment : ${comments}">
         <div class="comment-container">
           <div th:text="${comment.user.username }" class="commentName"></div>
-          <div
-            th:text="${#temporals.format(comment.dateCreated, 'MM-dd-yyyy')}"
-            class="commentDate"></div>
+          <div th:text="${#temporals.format(comment.dateCreated, 'MM-dd-yyyy')}" class="commentDate"></div>
           <div th:text="${comment.commentMessaage}"></div>
-
-          <div th:if="${comment.user.userId == currentUser.userId}">
+          <div th:if="${comment.user.userId == currentUser.userId or authorities.authority == 'ROLE_ADMIN'}">
             <form class="formDelete" method="post"
               th:action="@{/task/{taskId}/comment/{commentId}/delete(taskId = ${task.taskId}, commentId=${comment.commentId})}">
               <button class="commentDelete" type="submit">

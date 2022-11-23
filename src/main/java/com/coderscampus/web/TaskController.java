@@ -32,6 +32,7 @@ public class TaskController {
 	public String getTask(ModelMap model, @PathVariable Long taskId, @AuthenticationPrincipal User user) {
 		Comment newComment = new Comment();	
 		
+		model.put("authorities", user.getAuthorities().iterator().next());
 		model.put("newComment", newComment);
 		model.put("task", taskService.findById(taskId));
 		model.put("currentUser", user);
