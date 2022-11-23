@@ -19,4 +19,6 @@ public class AdminService {
 	public List<User> getAllUserAccounts () {
 		return userRepo.findAll();
 	}
+	
+	
 }

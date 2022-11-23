@@ -7,5 +7,6 @@ import com.coderscampus.domain.Authorities;
 
 @Service
 public interface AuthoritiesRepository extends JpaRepository<Authorities, Long>{
-
+	
+	
 }

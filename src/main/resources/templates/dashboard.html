@@ -84,7 +84,8 @@
             <div th:text="${task.name}" class="taskTitle"></div>
             <div th:text="${task.taskDescription}" class="taskDescription"></div>
             <span th:text="'Created By: ' + ${task.user.username} + ' on ' + ${#temporals.format(task.dateCreated, 'MM-dd-yyyy')}" class="taskCreatedBy"></span>
-            <div th:if="${task.user.userId == user.userId}">
+            <div  th:if="${task.user.userId == user.userId or authorities.authority == 'ROLE_ADMIN'}">
+            
               <form method="post" th:action="@{/dashboard/{taskId}/delete(taskId = ${task.taskId})}">
                 <button id="commentDelete" class="deleteTaskButton" type="submit">Delete Task</button>
               </form>
