@@ -2,7 +2,7 @@ var submitButton = document.querySelector("#submitBtn")
 var username = document.querySelector("#username")
 var password = document.querySelector("#password")	
 var confirmPassword = document.querySelector("#confirmPassword")
-var eyeIcons = document.querySelectorAll('.fa-eye')
+//var eyeIcons = document.querySelectorAll('.fa-eye')
 var user = {
 	"username" : username.value,
 	"password" : password.value
