@@ -10,29 +10,29 @@ var user = {
 var users = []
 
 // eyecon stuff
-	eyeIcons.forEach( (eyeIcon) =>{
-	eyeIcon.addEventListener('click', () => {
-		if (eyeIcon.classList.contains('fa-eye')) {
-			eyeIcon.classList.replace('fa-eye', 'fa-eye-slash')
-			console.log(eyeIcon.getAttribute('id'))
-			if(eyeIcon.getAttribute('id') === 'passwordEyeIcon') {
-				document.querySelector("#password").type = 'text'
-			} else {
-				document.querySelector("#confirmPassword").type = 'text'
-			} 
-			
-		} else {
-			eyeIcon.classList.replace('fa-eye-slash', 'fa-eye')
-			console.log(eyeIcon.getAttribute('id'))
-			if(eyeIcon.getAttribute('id') === 'passwordEyeIcon') {
-				document.querySelector("#password").type = 'password'
-			} else {
-				document.querySelector("#confirmPassword").type = 'password'
-			} 
-		}
-	})
-})
-
+//	eyeIcons.forEach( (eyeIcon) =>{
+//	eyeIcon.addEventListener('click', () => {
+//		if (eyeIcon.classList.contains('fa-eye')) {
+//			eyeIcon.classList.replace('fa-eye', 'fa-eye-slash')
+//			console.log(eyeIcon.getAttribute('id'))
+//			if(eyeIcon.getAttribute('id') === 'passwordEyeIcon') {
+//				document.querySelector("#password").type = 'text'
+//			} else {
+//				document.querySelector("#confirmPassword").type = 'text'
+//			} 
+//			
+//		} else {
+//			eyeIcon.classList.replace('fa-eye-slash', 'fa-eye')
+//			console.log(eyeIcon.getAttribute('id'))
+//			if(eyeIcon.getAttribute('id') === 'passwordEyeIcon') {
+//				document.querySelector("#password").type = 'password'
+//			} else {
+//				document.querySelector("#confirmPassword").type = 'password'
+//			} 
+//		}
+//	})
+//})
+//
 
        	 
 // Check for username and password
