@@ -14,7 +14,7 @@
 		<packaging>war</packaging>
 		<name>David-Assignment15-1</name>
 		<description>David-Assignment15</description>
-		<properties>
+	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>

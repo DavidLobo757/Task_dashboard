@@ -1,1 +1,1 @@
-web: java -jar target/spring-boot-starter-parent-2.2.5.RELEASE.war 
+web: java $JAVA_OPTS -jar target/*.war
